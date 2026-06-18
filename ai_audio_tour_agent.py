@@ -16,7 +16,18 @@ st.set_page_config(
 )
 
 
-
+with st.sidebar:
+    st.title("🔑 Settings")
+    api_key = st.text_input(
+        "Gemini API Key:", 
+        value=os.getenv("GEMINI_API_KEY", ""), 
+        type="password",
+        help="Get your free key from aistudio.google.com"
+    )
+    if api_key:
+        st.session_state["GEMINI_API_KEY"] = api_key
+        os.environ["GEMINI_API_KEY"] = api_key
+        st.success("Gemini API key saved!")
 
 
 st.title("🎧 AI Audio Tour Agent")
@@ -70,7 +81,7 @@ with col2:
 
 
 if st.button("🎧 Generate Tour", type="primary"):
-    current_key = current_key = os.getenv("GEMINI_API_KEY")
+    current_key = st.session_state.get("GEMINI_API_KEY", os.getenv("GEMINI_API_KEY"))
     
     if not current_key:
         st.error("Please enter your Gemini API key in the sidebar or setup .env file.")
@@ -138,5 +149,4 @@ if st.button("🎧 Generate Tour", type="primary"):
                 )
                 
             except Exception as e:
-                st.error("❌ Something went wrong while generating the tour. Please try again later.")
-    print(f"Server Error: {e}")
+                st.error(f"Something went wrong: {e}")
