@@ -1,4 +1,5 @@
-google-genai
 streamlit
-python-dotenv
+google-generativeai
 pydantic
+python-dotenv
+gTTS
