@@ -1,69 +1,148 @@
-# 🎧 AI Audio Tour Agent
 
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white" alt="Streamlit">
-  <img src="https://img.shields.io/badge/Gemini%202.5%20Flash-00BCD4?style=for-the-badge&logo=google-gemini&logoColor=white" alt="Gemini">
-  <img src="https://img.shields.io/badge/Pydantic-E91E63?style=for-the-badge&logo=pydantic&logoColor=white" alt="Pydantic">
-</p>
+# 🎧 WanderVoice AI
 
----
+ > Transform any destination into a personalized audio-guided travel experience using AI.
 
-## 🌟 Introduction
-
-**AI Audio Tour Agent** is a next-generation, personalized audio travel guide application. It dynamically researches any global destination based on explicit user-selected interests (such as History, Architecture, Culinary, or Culture) and a specified duration to craft a highly engaging, localized audio script in the user's preferred language (e.g., English, Hindi).
-
-### The Architecture Evolution
-The initial iteration of this system utilized a multi-stage sequential agent system that independently triggered specific research workers. While modular, this design led to severe API rate-limiting issues on free-tier quotas. 
-
-This current version features a highly optimized **Single-Shot Orchestration Layer**. By merging multi-agent intelligence into a single consolidated, deeply contextualized prompt, the application entirely mitigates rate limits, slashes response latency by more than half, and retains rigorous structural validation.
+![Python](https://img.shields.io/badge/Python-3.10+-blue)
+![Streamlit](https://img.shields.io/badge/Streamlit-App-red)
+![Gemini](https://img.shields.io/badge/Gemini-2.5_Flash-orange)
+![Pydantic](https://img.shields.io/badge/Pydantic-Validation-green)
 
 ---
 
-## 🔥 Features
+## 🌍 Overview
 
-- **🎯 Granular Personalization:** Dynamically builds a travel script covering only the specific categories selected by the user.
-- **🌐 Seamless Localization:** Generates native text outputs perfectly aligned with the user's chosen target language.
-- **🎙️ Audio-Ready Content:** Scripts are synthesized as fluid, natural conversational paragraphs completely free of markdown clutter, structural headers, or bullet points—making them immediately ready for Text-to-Speech (TTS) engines.
-- **⚡ Quota-Friendly Architecture:** Groups planning, deep topic research, and structural editing capabilities into a single API call to guarantee high uptime and stability.
+WanderVoice AI is an intelligent travel companion that generates immersive, personalized audio tours for destinations around the world.
 
----
+Simply enter a destination, choose your interests, and the application researches the location, creates a structured travel narrative, and converts it into a natural audio-guided experience.
 
-## 🏗️ Technical Architecture & Design Philosophy
-
-The backend execution workflow bypasses complex, sequential network overhead:
-
-Instead of managing an asynchronous pool of fragmented workers, `manager.py` utilizes an expressive master prompt detailing technical instructions, topic boundaries, and strict language rules. To ensure data formatting consistency between the LLM output and the UI, the application enforces **Pydantic Structural Validation** (`FinalTour`), preventing structural runtime failures.
+Whether you're interested in history, culture, architecture, food, or local attractions, the agent delivers a tailored tour in seconds.
 
 ---
 
-## ⚙️ Setup & Local Installation
+## ✨ Features
 
-Follow these steps to configure and execute the project locally on your machine:
+### 🎯 Personalized Tour Generation
+Generate destination-specific tours based on user-selected interests.
 
-1. Clone the GitHub repository
+### 🗺️ Intelligent Destination Research
+Automatically gathers relevant information about landmarks, culture, history, and local highlights.
+
+### 🎙️ Audio Narration
+Converts generated travel content into an engaging voice-guided experience.
+
+### 🌐 Multi-Language Support
+Generate tours in different languages for global accessibility.
+
+### ⚡ Fast AI Processing
+Optimized prompt orchestration reduces response time while maintaining content quality.
+
+### ✅ Structured Output Validation
+Uses Pydantic schemas to ensure reliable and consistent AI responses.
+
+---
+
+## 🚀 How It Works
+
+1. Enter a destination.
+2. Select tour duration.
+3. Choose interests (History, Culture, Architecture, Food, etc.).
+4. AI researches the destination.
+5. A personalized travel script is generated.
+6. The script is converted into audio narration.
+7. Enjoy your virtual guided tour.
+
+---
+
+## 🏗️ Tech Stack
+
+- Python
+- Streamlit
+- Google Gemini API
+- Pydantic
+- Text-to-Speech (TTS)
+
+---
+
+## 📂 Project Structure
+
+```text
+WanderVoice-AI/
+│
+├── ai_audio_tour_agent.py          # Streamlit Frontend
+├── manager.py                      # AI Orchestration Layer
+├── agent.py                        # Prompt Engineering & Schemas
+├── requirements.txt
+├── .env
+├── .gitignore
+└── README.md
+```
+
+---
+
+## ⚙️ Installation
+
+### Clone Repository
 
 ```bash
-git clone https://github.com/meenuparashar18/Ai_audio_tour_agent.git
+git clone https://github.com/meenuparashar18/WanderVoice-AI.git
+cd AI_Audio_Tour_Agent
 ```
-2. Install the required dependencies:
+
+### Install Dependencies
 
 ```bash
 pip install -r requirements.txt
+```
 
-3. Get your Gemini API Key
-4. Configure Environment Variables
-Create a secure .env file in the root directory of the project to map your API authorization credentials:
-GEMINI_API_KEY="your_actual_gemini_api_key_here"
+### Configure Environment Variables
 
-5. Run the Streamlit App
+Create a `.env` file:
+
+```env
+GEMINI_API_KEY=your_api_key_here
+```
+
+### Run Application
+
 ```bash
 streamlit run ai_audio_tour_agent.py
 ```
-📂 Project Structure
-├── ai_audio_tour_agent.py  # Streamlit UI Layer (Frontend)
-├── manager.py               # Orchestration Layer & Single-Shot API Call (Backend)
-├── agent.py                 # Pydantic Schemas & Prompt Configurations
-├── .env                     # API Credentials (Local Only)
-├── .gitignore               # Automated Git Exclusions
-└── README.md                # Comprehensive Documentation
+
+---
+
+## 📸 Demo
+
+Add screenshots or GIFs here.
+
+```md
+![Demo](assets/demo.png)
+```
+
+---
+
+## 🎯 Example Use Case
+
+**Destination:** Paris
+
+**Interests:** History, Architecture, Culture
+
+**Output:**
+
+- AI-generated travel narrative
+- Audio-guided tour
+- Key landmarks and historical insights
+- Personalized storytelling experience
+
+---
+
+## 🔮 Future Enhancements
+
+- Real-time travel recommendations
+- Interactive voice conversations
+- Route planning integration
+- Maps support
+- Travel itinerary generation
+- Downloadable audio guides
+
+---
